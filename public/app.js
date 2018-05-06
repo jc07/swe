@@ -4,31 +4,15 @@ const socket = io();
 
 socket.on('add', data => {
     vm.employees.push(data);
-    notify("A new employee has been added.");
 })
 
 socket.on('update', data => {
     vm.fetchEmployees();
-    notify("An employee has been updated.");
 })
 
 socket.on('delete', data => {
     vm.fetchEmployees();
-    notify("An employee has been removed.");
 })
-
-var notify = body => {
-    Push.create("Employee Records System", {
-        body,
-        icon: 'static/img/user.ico',
-        timeout: 4000,
-        onClick() {
-            window.focus();
-            this.close();
-        }
-    });
-    artyom.say(body);
-}
 
 const commands = [
     {
@@ -77,18 +61,17 @@ var vm = new Vue({
         loader: true,
         addEmployeeModal: false,
         employees: [],
-        fields: ["name", "email", "contact", "fnm","Spouse","gender","nation","address"],
+        fields: ["name", "email", "contact", "fnm", "Spouse", "gender", "nation", "address"],
         selectedField: null,
         employee: {
             name: null,
             email: null,
             contact: null,
-            fnm:null,
-            Spouse:null,
-            gender:null,
-            nation:null,
-            address:null
-
+            fnm: null,
+            Spouse: null,
+            gender: null,
+            nation: null,
+            address: null
         },
         add_error: false,
         editEmployeeModal: false
@@ -129,7 +112,6 @@ var vm = new Vue({
             }
         },
         addEmployee() {
-            
             if (!this.employee.name || !this.employee.email || !this.employee.contact ) {
                 console.log('aaa');
                 // alert('a');

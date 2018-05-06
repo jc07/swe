@@ -5,6 +5,23 @@
     <% include partials/head %>
 </head>
 
+<style>
+  body{
+    width: auto;
+  }
+  #app{
+  overflow-x: scroll;
+  width: auto;
+      white-space: nowrap;
+  }
+  .app{
+     display: inline-block;
+     width: 400px;
+     height: 100px;
+     border:1px solid;
+  }
+  </style>
+
 <body>
     <v-app id="app">
         <% include partials/toolbar %>
@@ -21,6 +38,7 @@
                     <table class="table" v-show="employeeContainer">
                         <thead>
                             <tr>
+                                <th>Actions</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
@@ -30,11 +48,18 @@
                                 <th>Nation</th>
                                 <th>Address</th>
 
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="(e, index) in filterBy(orderBy(employees, selectedField), search)" :key="index">
+                              <td class="text-xs-center">
+                                  <v-btn icon class="fa fa-edit" @click.native.stop="openEditEmployeeModal(e)">
+
+                                  </v-btn>
+                                  <v-btn icon class="fa fa-trash" @click.native.stop="removeEmployee(e._id)">
+
+                                  </v-btn>
+                              </td>
                                 <td class="text-xs-center">[[ e.name ]]</td>
                                 <td class="text-xs-center">[[ e.email ]]</td>
                                 <td class="text-xs-center">[[ e.contact ]]</td>
@@ -44,18 +69,11 @@
                                 <td class="text-xs-center">[[ e.nation ]]</td>
                                 <td class="text-xs-center">[[ e.address ]]</td>
 
-                                <td class="text-xs-center">
-                                    <v-btn icon class="blue--text" @click.native.stop="openEditEmployeeModal(e)">
-                                        <v-icon>mode_edit</v-icon>
-                                    </v-btn>
-                                    <v-btn icon class="red--text" @click.native.stop="removeEmployee(e._id)">
-                                        <v-icon>delete_forever</v-icon>
-                                    </v-btn>
-                                </td>
+
                             </tr>
                         </tbody>
                     </table>
-                    <v-btn floating large class="pink" id="addButton" @click.native="openAddEmployeeModal">
+                    <v-btn floating large class="green" id="addButton" @click.native="openAddEmployeeModal">
                         <v-icon light>add</v-icon>
                     </v-btn>
                 </v-container>
