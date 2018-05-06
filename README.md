@@ -8,5 +8,5 @@ npm install
 
 Run
 ```
-node index
+node index.js
 ```
