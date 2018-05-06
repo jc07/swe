@@ -1,4 +1,4 @@
-<v-dialog v-model="addEmployeeModal" persistent fullscreen=true>
+<v-dialog v-model="addEmployeeModal" persistent :fullscreen=true transition="v-dialog-bottom-transition" :overlay=false>
     <v-card>
         <v-card-row class="black darken-1">
             <v-card-title class="white--text"> New Employee Details</v-card-title>
@@ -45,10 +45,10 @@
     </v-card>
 </v-dialog>
 
-<v-dialog v-model="editEmployeeModal" persistent fullscreen=true>
+<v-dialog v-model="editEmployeeModal" persistent :fullscreen=true transition="v-dialog-bottom-transition" :overlay=false>
   <v-card>
       <v-card-row class="black darken-1">
-          <v-card-title class="white--text"><v-icon light left>person</v-icon> New Employee</v-card-title>
+          <v-card-title class="white--text"><v-icon light left>person</v-icon> Edit Employee Details</v-card-title>
       </v-card-row>
       <v-card-row>
           <v-card-text>
